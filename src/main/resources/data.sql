@@ -22,9 +22,9 @@ values (10, "2038-01-19 03:14:07.999999", "desc1", "2038-01-19 03:14:07.999999",
         "2038-01-19 03:14:07.999999", "title3", 9);
 
 insert into users
-values (13, "department1", "email1", "firstname1", "lastname1", "password1", "phone1"),
-       (14, "department2", "email2", "firstname2", "lastname2", "password2", "phone2"),
-       (15, "department3", "email3", "firstname3", "lastname3", "password3", "phone3");
+values (13, "HR", "email1", "firstname1", "lastname1", "password1", "phone1"),
+       (14, "HR", "email2", "firstname2", "lastname2", "password2", "phone2"),
+       (15, "DEVELOPER", "email3", "firstname3", "lastname3", "password3", "phone3");
 
 insert into users_groups
 values (13, 4),

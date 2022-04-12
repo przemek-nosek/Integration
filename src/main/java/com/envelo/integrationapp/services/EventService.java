@@ -10,12 +10,11 @@ import com.envelo.integrationapp.repositories.EventRepository;
 import com.envelo.integrationapp.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.Session;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -73,5 +72,19 @@ public class EventService {
             }
         }
         return returnListEvent;
+    }
+
+    @Transactional
+    public EventDtoInfo getEventById(long id) {
+        Event eventEntity = eventRepository.getById(id);
+        EventDtoInfo eventDtoInfo = new EventDtoInfo();
+        eventDtoInfo.setId(eventEntity.getId());
+        eventDtoInfo.setTitle(eventEntity.getTitle());
+        eventDtoInfo.setEventStatus(eventEntity.getEventStatus());
+        eventDtoInfo.setStartDate(eventEntity.getStartDate());
+        eventDtoInfo.setEndDate(eventEntity.getEndDate());
+        eventDtoInfo.setEventParticipantDtoInfo(null);
+        eventDtoInfo.setEventPlaceDtoInfo(null);
+        return eventDtoInfo;
     }
 }

@@ -27,4 +27,9 @@ public class EventController {
     public Set<EventDtoInfo> getUserEventsByEventStatus(@PathVariable long userId, @RequestParam EventStatus eventStatus) {
         return eventService.getEventByUserStatus(userId, eventStatus);
     }
+
+    @GetMapping("/{id}/event")
+    public EventDtoInfo getEventById(@PathVariable long id) {
+        return eventService.getEventById(id);
+    }
 }
