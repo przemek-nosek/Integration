@@ -23,6 +23,10 @@ public class Event {
     private LocalDateTime endDate;
     private LocalDateTime deadlineDecision;
     @ManyToOne
+    private User eventCreator;
+    @ManyToMany
+    private List<User> guests;
+    @ManyToOne
     private EventPlace eventPlace;
     @OneToMany
     private List<Post> posts;
