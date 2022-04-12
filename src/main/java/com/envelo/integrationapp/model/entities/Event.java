@@ -29,7 +29,7 @@ public class Event {
     private LocalDateTime endDate;
     private LocalDateTime deadlineDecision;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
     private EventPlace eventPlace;
 
     @OneToMany
@@ -43,6 +43,7 @@ public class Event {
     @Enumerated(EnumType.ORDINAL)
     private EventStatus eventStatus;
 
-    @OneToMany(mappedBy = "event")
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "event_id")
     private List<EventParticipant> participants = new ArrayList<>();
 }

@@ -25,5 +25,4 @@ public class EventPlace {
     private String streetNumber;
     private String localNumber;
     private String postCode;
-
 }

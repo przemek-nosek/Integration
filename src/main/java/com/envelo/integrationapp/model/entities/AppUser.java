@@ -25,12 +25,12 @@ public class AppUser {
     private String password;
     private String phone;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Group> groups = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
     private Department department;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 }

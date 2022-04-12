@@ -18,10 +18,7 @@ public class EventParticipant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private Event event;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private AppUser appUser;
 
     @Enumerated(EnumType.STRING)
