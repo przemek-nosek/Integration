@@ -1,0 +1,26 @@
+### ADD EVENT
+
+{
+  "title": "title",
+  "description": "desc",
+  "minMembers": 1,
+  "maxMembers": 1,
+  "startDate": "2007-12-03T10:15:30",
+  "endDate": "2007-12-03T10:15:30",
+  "deadlineDecision": "2007-12-03T10:15:30",
+  "eventPlace": {
+    "placeType": "RESTAURANT",
+    "city": "city",
+    "street": "street",
+    "streetNumber": "streetNumber",
+    "localNumber": "localNumber",
+    "postCode": "postCode"
+  },
+  "participants":[
+    {
+      "userId": 13,
+      "eventRole": "HOST",
+      "decision": "NOT_DECIDED"
+    }
+  ]
+}

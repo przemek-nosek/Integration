@@ -1,6 +1,5 @@
 package com.envelo.integrationapp.model.dtos;
 
-import com.envelo.integrationapp.model.entities.EventParticipant;
 import com.envelo.integrationapp.model.entities.EventPlace;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
