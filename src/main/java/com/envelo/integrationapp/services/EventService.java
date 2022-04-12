@@ -7,6 +7,7 @@ import com.envelo.integrationapp.model.dtos.info.EventParticipantDtoInfo;
 import com.envelo.integrationapp.model.dtos.info.EventPlaceDtoInfo;
 import com.envelo.integrationapp.model.entities.Event;
 import com.envelo.integrationapp.model.entities.EventParticipant;
+import com.envelo.integrationapp.model.enums.Decision;
 import com.envelo.integrationapp.model.enums.EventRole;
 
 import com.envelo.integrationapp.model.entities.Event;
@@ -85,24 +86,28 @@ public class EventService {
         return eventDtoInfo;
     }
 
-//    public List<EventDtoInfo> getAllUserCreatedEvents(Long userId, EventRole eventRole) {
-//        List<Event> events = eventRepository.findEventsByCreator(userId, eventRole);
-//        List<EventDtoInfo> eventDtos = new ArrayList<>();
-//        for (Event event : events) {
-//            for (EventParticipant participant : event.getParticipants()) {
-//                if (participant.getId() == userId) {
-//                    EventDtoInfo eventDtoInfo = new EventDtoInfo();
-//                    eventDtoInfo.setId(event.getId());
-//                    eventDtoInfo.setTitle(event.getTitle());
-//                    eventDtoInfo.setStartDate(event.getStartDate());
-//                    eventDtoInfo.setEndDate(event.getEndDate());
-//                    eventDtoInfo.setEventStatus(event.getEventStatus());
-//                    eventDtos.add(eventDtoInfo);
-//                }
-//            }
-//        }
-//        return eventDtos;
-//    }
+
+    @Transactional
+    public List<EventDtoInfo> getAllUserCreatedEvents(Long userId, EventRole eventRole) {
+        List<Event> events = eventRepository.findEventsByCreator(userId);
+
+        List<EventDtoInfo> eventDtos = new ArrayList<>();
+        for (Event event : events) {
+            for (EventParticipant participant : event.getParticipants()) {
+                if (Objects.equals(participant.getId(), userId)) {
+                    EventDtoInfo eventDtoInfo = new EventDtoInfo();
+                    eventDtoInfo.setId(event.getId());
+                    eventDtoInfo.setTitle(event.getTitle());
+                    eventDtoInfo.setStartDate(event.getStartDate());
+                    eventDtoInfo.setEndDate(event.getEndDate());
+                    eventDtoInfo.setEventStatus(event.getEventStatus());
+                    eventDtos.add(eventDtoInfo);
+                }
+            }
+        }
+        return eventDtos;
+    }
+
 
     @Transactional
     public void updateEvent(Long id, EventCreationDto eventCreationDto) {
@@ -140,5 +145,12 @@ public class EventService {
 
     public void deleteEvent(long id) {
         eventRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void changeUserDecision(Long eventId, Long userId, Decision decision) {
+        Event eventByEventIdAndUserId = eventRepository.findEventByEventIdAndUserId(eventId, userId);
+
+        eventByEventIdAndUserId.getParticipants().get(0).setDecision(decision);
     }
 }

@@ -4,6 +4,7 @@ import com.envelo.integrationapp.model.dtos.EventCreationDto;
 import com.envelo.integrationapp.model.dtos.info.EventDtoInfo;
 import com.envelo.integrationapp.model.entities.Event;
 
+import com.envelo.integrationapp.model.enums.Decision;
 import com.envelo.integrationapp.model.enums.EventRole;
 import com.envelo.integrationapp.model.enums.EventStatus;
 
@@ -41,10 +42,16 @@ public class EventController {
         eventService.updateEvent(id, eventCreationDto);
     }
 
-//    @GetMapping
-//    public List<EventDtoInfo> getCreatedEvents() {
-//        return eventService.getAllUserCreatedEvents(1L, EventRole.HOST);
-//    }
+    @PutMapping("/{eventId}/users/{userId}")
+    public void updateEvent(@PathVariable Long eventId, @PathVariable Long userId, @RequestParam Decision decision) {
+        eventService.changeUserDecision(eventId, userId, decision);
+    }
+
+    @GetMapping("/created/{id}")
+    public List<EventDtoInfo> getCreatedEvents(@PathVariable Long id) {
+        return eventService.getAllUserCreatedEvents(id, EventRole.HOST);
+    }
+
 
     @GetMapping("/{userId}/status/eventStatus")
     public Set<EventDtoInfo> getUserEventsByEventStatus(@PathVariable long userId, @RequestParam EventStatus eventStatus) {
