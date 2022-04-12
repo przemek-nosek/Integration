@@ -85,6 +85,7 @@ public class EventService {
         return eventDtoInfo;
     }
 
+
     @Transactional
     public List<EventDtoInfo> getAllUserCreatedEvents(Long userId, EventRole eventRole) {
         List<Event> events = eventRepository.findEventsByCreator(userId);
@@ -105,6 +106,7 @@ public class EventService {
         }
         return eventDtos;
     }
+
 
     @Transactional
     public void updateEvent(Long id, EventCreationDto eventCreationDto) {
@@ -138,6 +140,9 @@ public class EventService {
         }
 
         return eventParticipants;
+    }
 
+    public void deleteEvent(long id) {
+        eventRepository.deleteById(id);
     }
 }

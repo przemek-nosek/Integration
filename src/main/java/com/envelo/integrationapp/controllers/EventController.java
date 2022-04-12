@@ -41,10 +41,12 @@ public class EventController {
         eventService.updateEvent(id, eventCreationDto);
     }
 
+
     @GetMapping("/created/{id}")
     public List<EventDtoInfo> getCreatedEvents(@PathVariable Long id) {
         return eventService.getAllUserCreatedEvents(id, EventRole.HOST);
     }
+
 
     @GetMapping("/{userId}/status/eventStatus")
     public Set<EventDtoInfo> getUserEventsByEventStatus(@PathVariable long userId, @RequestParam EventStatus eventStatus) {
@@ -54,5 +56,10 @@ public class EventController {
     @GetMapping("/{id}/event")
     public EventDtoInfo getEventById(@PathVariable long id) {
         return eventService.getEventById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteEventById(@PathVariable long id) {
+        eventService.deleteEvent(id);
     }
 }
