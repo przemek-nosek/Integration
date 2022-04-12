@@ -1,35 +1,21 @@
 package com.envelo.integrationapp.services;
 
 import com.envelo.integrationapp.model.dtos.EventCreationDto;
-<<<<<<< HEAD
 import com.envelo.integrationapp.model.dtos.info.EventDtoInfo;
 import com.envelo.integrationapp.model.entities.Event;
 import com.envelo.integrationapp.model.entities.EventParticipant;
 import com.envelo.integrationapp.model.enums.EventStatus;
-=======
 import com.envelo.integrationapp.model.dtos.EventParticipantDto;
-import com.envelo.integrationapp.model.entities.AppUser;
-import com.envelo.integrationapp.model.entities.Event;
-import com.envelo.integrationapp.model.entities.EventParticipant;
->>>>>>> dev
 import com.envelo.integrationapp.repositories.EventRepository;
 import com.envelo.integrationapp.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-=======
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
->>>>>>> dev
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
