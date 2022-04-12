@@ -22,4 +22,6 @@ public class EventController {
     public Event addEvent(@RequestBody EventCreationDto eventCreationDto) {
         return eventService.addEvent(eventCreationDto);
     }
+    @GetMapping
+    public List<Event> get
 }
