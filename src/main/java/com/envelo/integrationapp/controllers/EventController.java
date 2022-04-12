@@ -6,6 +6,8 @@ import com.envelo.integrationapp.services.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/events")
 @RequiredArgsConstructor
@@ -13,15 +15,11 @@ public class EventController {
 
     private final EventService eventService;
 
-    @GetMapping
-    public Event getEvent(){
-        return eventService.getEvent(1L);
-    }
-
     @PostMapping
     public Event addEvent(@RequestBody EventCreationDto eventCreationDto) {
+        System.out.println(LocalDateTime.now());
+
         return eventService.addEvent(eventCreationDto);
     }
-    @GetMapping
-    public List<Event> get
+
 }

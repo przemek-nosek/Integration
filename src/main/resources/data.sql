@@ -37,9 +37,9 @@ values (13, 1),
        (15, 3);
 
 insert into event_participants
-values (16, "yes", "rola1", 13, 10),
-       (17, "yes", "rola2", 14, 11),
-       (18, "yes", "rola3", 15, 12);
+values (16, "HOST", "rola1", 13, 10),
+       (17, "HOST", "rola2", 14, 11),
+       (18, "HOST", "rola3", 15, 12);
 
 insert into posts
 values (19, "2038-01-19 03:14:07.999999", "desc1", "file1", 13, 10),
