@@ -1,22 +1,24 @@
 package com.envelo.integrationapp.model.entities;
 
-import lombok.*;
 
-import javax.persistence.*;
-import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "group_entity")
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
 public class Group {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue
+    private Long id;
 
     private String name;
-
-    @ManyToMany(mappedBy = "groups")
-    private List<User> participants;
 }
