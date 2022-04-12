@@ -43,7 +43,7 @@ public class Event {
     @Enumerated(EnumType.STRING)
     private EventStatus eventStatus;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "event_id")
     private List<EventParticipant> participants = new ArrayList<>();
 }
