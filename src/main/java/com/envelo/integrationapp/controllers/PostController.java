@@ -19,4 +19,6 @@ public class PostController {
     public void addPost(@RequestBody PostCreationDto postCreationDto) {
         postService.addPost(postCreationDto);
     }
+
+
 }
