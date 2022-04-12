@@ -24,5 +24,5 @@ public class EventCreationDto {
     private LocalDateTime endDate;
     private LocalDateTime deadlineDecision;
     private EventPlace eventPlace;
-    private List<EventParticipant> participants = new ArrayList<>();
+    private List<EventParticipantDto> participants = new ArrayList<>();
 }

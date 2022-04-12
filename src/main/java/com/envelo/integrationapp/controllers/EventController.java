@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/events")
@@ -16,11 +17,6 @@ import java.util.Set;
 public class EventController {
 
     private final EventService eventService;
-
-    @GetMapping
-    public Event getEvent(){
-        return eventService.getEvent(1L);
-    }
 
     @PostMapping
     public Event addEvent(@RequestBody EventCreationDto eventCreationDto) {

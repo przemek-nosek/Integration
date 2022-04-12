@@ -17,5 +17,5 @@ public class PostCreationDto {
     private Long eventId;
     private byte[] file;
     private String description;
-    private List<PostComment> postComments = new ArrayList<>();
+    private List<PostCommentDto> postComments = new ArrayList<>();
 }

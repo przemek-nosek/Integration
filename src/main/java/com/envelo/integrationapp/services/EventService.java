@@ -1,20 +1,34 @@
 package com.envelo.integrationapp.services;
 
 import com.envelo.integrationapp.model.dtos.EventCreationDto;
+<<<<<<< HEAD
 import com.envelo.integrationapp.model.dtos.info.EventDtoInfo;
 import com.envelo.integrationapp.model.entities.Event;
 import com.envelo.integrationapp.model.entities.EventParticipant;
 import com.envelo.integrationapp.model.enums.EventStatus;
+=======
+import com.envelo.integrationapp.model.dtos.EventParticipantDto;
+import com.envelo.integrationapp.model.entities.AppUser;
+import com.envelo.integrationapp.model.entities.Event;
+import com.envelo.integrationapp.model.entities.EventParticipant;
+>>>>>>> dev
 import com.envelo.integrationapp.repositories.EventRepository;
+import com.envelo.integrationapp.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+=======
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> dev
 import java.util.stream.Collectors;
 
 @Service
@@ -23,9 +37,23 @@ import java.util.stream.Collectors;
 public class EventService {
 
     private final EventRepository eventRepository;
-
+    private final UserRepository userRepository;
 
     public Event addEvent(EventCreationDto eventCreationDto) {
+        List<EventParticipantDto> participants = eventCreationDto.getParticipants();
+
+        List<EventParticipant> eventParticipants = new ArrayList<>();
+
+        for (EventParticipantDto participant : participants) {
+            EventParticipant eventParticipant = EventParticipant.builder()
+                    .eventRole(participant.getEventRole())
+                    .decision(participant.getDecision())
+                    .appUser(userRepository.getById(participant.getUserId()))
+                    .build();
+
+            eventParticipants.add(eventParticipant);
+        }
+
         Event event = Event.builder()
                 .title(eventCreationDto.getTitle())
                 .description(eventCreationDto.getDescription())
@@ -35,23 +63,12 @@ public class EventService {
                 .endDate(eventCreationDto.getEndDate())
                 .deadlineDecision(eventCreationDto.getDeadlineDecision())
                 .eventPlace(eventCreationDto.getEventPlace())
-                .participants(eventCreationDto.getParticipants())
+                .participants(eventParticipants)
                 .build();
 
-
-        return eventRepository.save(event);
-    }
-
-    public Event getEvent(long l) {
-
-
-        Event byId = eventRepository.getById(10L);
-
-        System.out.println(byId.getDeadlineDecision());
-        System.out.println(byId.getDeadlineDecision());
-        System.out.println(byId.getDeadlineDecision());
-
-        return byId;
+        Event save = eventRepository.save(event);
+        log.info("SAVEDDDDDDDDDD");
+        return save;
     }
 
     public Set<EventDtoInfo> getEventByUserStatus(long userId, EventStatus eventStatus) {
