@@ -2,6 +2,7 @@ package com.envelo.integrationapp.model.abstracts;
 
 import com.envelo.integrationapp.model.entities.User;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @Getter
 @Setter
+@NoArgsConstructor
 abstract public class Content {
 
     @Id
