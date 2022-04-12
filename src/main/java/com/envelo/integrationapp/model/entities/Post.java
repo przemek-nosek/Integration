@@ -1,15 +1,20 @@
 package com.envelo.integrationapp.model.entities;
 
 import com.envelo.integrationapp.model.abstracts.Content;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
+@Table(name = "posts")
 @NoArgsConstructor
 @Getter
 @Setter
@@ -17,8 +22,7 @@ import java.util.List;
 public class Post extends Content {
     private byte[] file;
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.PERSIST)
+    @OneToMany
     @JoinColumn(name = "post_id")
-    private List<PostComment> comments = new ArrayList<>();
-
+    private List<PostComment> postComments = new ArrayList<>();
 }

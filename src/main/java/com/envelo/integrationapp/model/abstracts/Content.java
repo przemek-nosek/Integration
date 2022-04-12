@@ -1,6 +1,7 @@
 package com.envelo.integrationapp.model.abstracts;
 
-import com.envelo.integrationapp.model.entities.User;
+
+import com.envelo.integrationapp.model.entities.AppUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,20 +12,21 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @SuperBuilder
-abstract public class Content {
-
+public abstract class Content {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
     private String description;
     private LocalDateTime date;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
-    private User user;
+    private AppUser appUser;
 
     @PrePersist
     public void createdOn() {
