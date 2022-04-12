@@ -20,7 +20,8 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     @Query("select e from Event e, EventParticipant ep where ep.appUser.id=:id and ep.eventRole='HOST'")
     List<Event> findEventsByCreator(Long id);
 
-
+    @Query("select e from Event e, EventParticipant ep where ep.appUser.id=:userId and e.id=:eventId")
+    Event findEventByEventIdAndUserId(Long eventId, Long userId);
 
     List<Event> findAllByEventStatus(EventStatus eventStatus);
 
