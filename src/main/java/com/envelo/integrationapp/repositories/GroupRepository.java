@@ -1,4 +1,4 @@
-package com.envelo.integrationapp.repository;
+package com.envelo.integrationapp.repositories;
 
 import com.envelo.integrationapp.model.entities.Group;
 import org.springframework.data.jpa.repository.JpaRepository;
