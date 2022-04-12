@@ -2,12 +2,10 @@ package com.envelo.integrationapp.model.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.cglib.core.Local;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Getter
@@ -26,11 +24,9 @@ public class Event {
     private LocalDateTime deadlineDecision;
     @ManyToOne
     private EventPlace eventPlace;
-
-    private Map<Boolean, List<User>> hosts;
-    private Map<Decision, List<User>> guests;
     @OneToMany
     private List<Post> posts;
+    @OneToMany
     private List<Feedback> feedbacks;
     @Enumerated(value = EnumType.STRING)
     private EventStatus eventStatus;

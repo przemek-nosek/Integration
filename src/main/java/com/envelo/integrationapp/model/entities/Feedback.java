@@ -13,9 +13,8 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class Feedback extends Content {
 
-    public Feedback(String description, User user, int rank) {
+    public Feedback(String description, User user) {
         super(description, user);
-        this.rank = rank;
     }
 
     private int rank;
