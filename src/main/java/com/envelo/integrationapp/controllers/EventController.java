@@ -19,8 +19,13 @@ public class EventController {
     private final EventService eventService;
 
     @PostMapping
-    public Event addEvent(@RequestBody EventCreationDto eventCreationDto) {
-        return eventService.addEvent(eventCreationDto);
+    public void addEvent(@RequestBody EventCreationDto eventCreationDto) {
+        eventService.addEvent(eventCreationDto);
+    }
+
+    @PutMapping("/{id}")
+    public void updateEvent(@RequestBody EventCreationDto eventCreationDto, @PathVariable Long id) {
+        eventService.updateEvent(id, eventCreationDto);
     }
 
     @GetMapping("/{userId}/status/eventStatus")

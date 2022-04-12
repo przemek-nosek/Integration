@@ -11,6 +11,7 @@ import com.envelo.integrationapp.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -25,20 +26,8 @@ public class EventService {
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
 
-    public Event addEvent(EventCreationDto eventCreationDto) {
-        List<EventParticipantDto> participants = eventCreationDto.getParticipants();
-
-        List<EventParticipant> eventParticipants = new ArrayList<>();
-
-        for (EventParticipantDto participant : participants) {
-            EventParticipant eventParticipant = EventParticipant.builder()
-                    .eventRole(participant.getEventRole())
-                    .decision(participant.getDecision())
-                    .appUser(userRepository.getById(participant.getUserId()))
-                    .build();
-
-            eventParticipants.add(eventParticipant);
-        }
+    public void addEvent(EventCreationDto eventCreationDto) {
+        List<EventParticipant> eventParticipants = mapParticipants(eventCreationDto);
 
         Event event = Event.builder()
                 .title(eventCreationDto.getTitle())
@@ -54,7 +43,6 @@ public class EventService {
 
         Event save = eventRepository.save(event);
         log.info("SAVEDDDDDDDDDD");
-        return save;
     }
 
     public Set<EventDtoInfo> getEventByUserStatus(long userId, EventStatus eventStatus) {
@@ -73,5 +61,39 @@ public class EventService {
             }
         }
         return returnListEvent;
+    }
+
+    @Transactional
+    public void updateEvent(Long id, EventCreationDto eventCreationDto) {
+        List<EventParticipant> eventParticipants = mapParticipants(eventCreationDto);
+
+        Event byId = eventRepository.getById(id);
+        byId.setTitle(eventCreationDto.getTitle());
+        byId.setDescription(eventCreationDto.getDescription());
+        byId.setMinMembers(eventCreationDto.getMinMembers());
+        byId.setMaxMembers(eventCreationDto.getMaxMembers());
+        byId.setStartDate(eventCreationDto.getStartDate());
+        byId.setEndDate(eventCreationDto.getEndDate());
+        byId.setDeadlineDecision(eventCreationDto.getDeadlineDecision());
+        byId.setEventPlace(eventCreationDto.getEventPlace());
+        byId.setParticipants(eventParticipants);
+    }
+
+    private List<EventParticipant> mapParticipants(EventCreationDto eventCreationDto) {
+        List<EventParticipantDto> participants = eventCreationDto.getParticipants();
+
+        List<EventParticipant> eventParticipants = new ArrayList<>();
+
+        for (EventParticipantDto participant : participants) {
+            EventParticipant eventParticipant = EventParticipant.builder()
+                    .eventRole(participant.getEventRole())
+                    .decision(participant.getDecision())
+                    .appUser(userRepository.getById(participant.getUserId()))
+                    .build();
+
+            eventParticipants.add(eventParticipant);
+        }
+
+        return eventParticipants;
     }
 }
