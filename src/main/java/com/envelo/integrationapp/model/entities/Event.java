@@ -40,7 +40,7 @@ public class Event {
     @JoinColumn(name = "event_id")
     private List<Feedback> feedbacks = new ArrayList<>();
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private EventStatus eventStatus;
 
     @OneToMany(cascade = CascadeType.PERSIST)
