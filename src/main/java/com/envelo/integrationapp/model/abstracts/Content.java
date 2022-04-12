@@ -1,9 +1,11 @@
 package com.envelo.integrationapp.model.abstracts;
 
 import com.envelo.integrationapp.model.entities.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +14,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
 abstract public class Content {
 
     @Id
@@ -21,11 +25,6 @@ abstract public class Content {
     private LocalDateTime date;
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
     private User user;
-
-    public Content(String description, User user) {
-        this.description = description;
-        this.user = user;
-    }
 
     @PrePersist
     public void createdOn() {
