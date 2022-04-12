@@ -1,6 +1,5 @@
 package com.envelo.integrationapp.model.dtos;
 
-import com.envelo.integrationapp.model.entities.EventParticipant;
 import com.envelo.integrationapp.model.entities.EventPlace;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,5 +23,5 @@ public class EventCreationDto {
     private LocalDateTime endDate;
     private LocalDateTime deadlineDecision;
     private EventPlace eventPlace;
-    private List<EventParticipant> participants = new ArrayList<>();
+    private List<EventParticipantDto> participants = new ArrayList<>();
 }

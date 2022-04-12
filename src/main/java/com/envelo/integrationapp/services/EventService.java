@@ -73,7 +73,8 @@ public class EventService {
         }
         return returnListEvent;
     }
-    public List<EventDtoInfo> getAllUserCreatedEvents(Long userId, EventRole eventRole){
+
+    public List<EventDtoInfo> getAllUserCreatedEvents(Long userId, EventRole eventRole) {
         List<Event> events = eventRepository.findEventsByCreator(userId, eventRole);
         List<EventDtoInfo> eventDtos = new ArrayList<>();
         for (Event event : events) {
@@ -90,6 +91,7 @@ public class EventService {
             }
         }
         return eventDtos;
+    }
 
     @Transactional
     public void updateEvent(Long id, EventCreationDto eventCreationDto) {
