@@ -6,6 +6,7 @@ import com.envelo.integrationapp.repositories.EventRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,5 +31,17 @@ public class EventService {
 
 
         return eventRepository.save(event);
+    }
+
+    public Event getEvent(long l) {
+
+
+        Event byId = eventRepository.getById(10L);
+
+        System.out.println(byId.getDeadlineDecision());
+        System.out.println(byId.getDeadlineDecision());
+        System.out.println(byId.getDeadlineDecision());
+
+        return byId;
     }
 }

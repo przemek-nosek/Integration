@@ -29,7 +29,7 @@ public class Event {
     private LocalDateTime endDate;
     private LocalDateTime deadlineDecision;
 
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)//, optional = false)
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)//, optional = false)
     private EventPlace eventPlace;
 
     @OneToMany

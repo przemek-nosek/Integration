@@ -9,16 +9,16 @@ values (4, "grupa 1"),
        (6, "grupa 3");
 
 insert into event_places
-values (7, "city1", "local_number1", "place_type1", "postcode1", "street1", "street_number1"),
-       (8, "city2", "local_number2", "place_type2", "postcode2", "street2", "street_number2"),
-       (9, "city3", "local_number3", "place_type3", "postcode3", "street3", "street_number3");
+values (7, "city1", "local_number1", "RESTAURANT", "postcode1", "street1", "street_number1"),
+       (8, "city2", "local_number2", "RESTAURANT", "postcode2", "street2", "street_number2"),
+       (9, "city3", "local_number3", "RESTAURANT", "postcode3", "street3", "street_number3");
 
 insert into events_entity
-values (10, "2038-01-19 03:14:07.999999", "desc1", "2038-01-19 03:14:07.999999", "yes", 3, 3,
+values (10, "2038-01-19 03:14:07.999999", "desc1", "2038-01-19 03:14:07.999999", "ACTIVE", 3, 3,
         "2038-01-19 03:14:07.999999", "title1", 7),
-       (11, "2038-01-19 03:14:07.999999", "desc2", "2038-01-19 03:14:07.999999", "no", 4, 4,
+       (11, "2038-01-19 03:14:07.999999", "desc2", "2038-01-19 03:14:07.999999", "ACTIVE", 4, 4,
         "2038-01-19 03:14:07.999999", "title2", 8),
-       (12, "2038-01-19 03:14:07.999999", "desc3", "2038-01-19 03:14:07.999999", "hehe", 5, 123,
+       (12, "2038-01-19 03:14:07.999999", "desc3", "2038-01-19 03:14:07.999999", "ACTIVE", 5, 123,
         "2038-01-19 03:14:07.999999", "title3", 9);
 
 insert into users
