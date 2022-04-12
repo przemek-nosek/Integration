@@ -1,6 +1,5 @@
 package com.envelo.integrationapp.model.dtos;
 
-import com.envelo.integrationapp.model.entities.PostComment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
