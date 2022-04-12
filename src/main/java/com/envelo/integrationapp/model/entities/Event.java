@@ -2,9 +2,7 @@ package com.envelo.integrationapp.model.entities;
 
 
 import com.envelo.integrationapp.model.enums.EventStatus;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,6 +12,8 @@ import java.util.List;
 @Entity
 @Table(name = "events_entity")
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter
 @Setter
 public class Event {
@@ -29,7 +29,7 @@ public class Event {
     private LocalDateTime endDate;
     private LocalDateTime deadlineDecision;
 
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, optional = false)
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)//, optional = false)
     private EventPlace eventPlace;
 
     @OneToMany
