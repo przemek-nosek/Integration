@@ -41,9 +41,9 @@ public class EventController {
         eventService.updateEvent(id, eventCreationDto);
     }
 
-    @GetMapping
-    public List<EventDtoInfo> getCreatedEvents() {
-        return eventService.getAllUserCreatedEvents(1L, EventRole.HOST);
+    @GetMapping("/created/{id}")
+    public List<EventDtoInfo> getCreatedEvents(@PathVariable Long id) {
+        return eventService.getAllUserCreatedEvents(id, EventRole.HOST);
     }
 
     @GetMapping("/{userId}/status/eventStatus")

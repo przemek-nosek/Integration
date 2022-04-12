@@ -85,12 +85,14 @@ public class EventService {
         return eventDtoInfo;
     }
 
+    @Transactional
     public List<EventDtoInfo> getAllUserCreatedEvents(Long userId, EventRole eventRole) {
-        List<Event> events = eventRepository.findEventsByCreator(userId, eventRole);
+        List<Event> events = eventRepository.findEventsByCreator(userId);
+
         List<EventDtoInfo> eventDtos = new ArrayList<>();
         for (Event event : events) {
             for (EventParticipant participant : event.getParticipants()) {
-                if (participant.getId() == userId) {
+                if (Objects.equals(participant.getId(), userId)) {
                     EventDtoInfo eventDtoInfo = new EventDtoInfo();
                     eventDtoInfo.setId(event.getId());
                     eventDtoInfo.setTitle(event.getTitle());
