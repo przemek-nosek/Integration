@@ -16,8 +16,8 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Event, Long> {
 
 
-    @Query("select e from Event e, EventParticipant ep where ep.appUser=:id and ep.eventRole=:role")
-    List<Event> findEventsByCreator(Long id, EventRole eventRole);
+//    @Query("select e from Event e, EventParticipant ep where ep.appUser=:id and ep.eventRole=:role")
+//    List<Event> findEventsByCreator(Long id, EventRole eventRole);
 
 
 

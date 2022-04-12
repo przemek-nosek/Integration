@@ -22,14 +22,14 @@ public abstract class Content {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String description;
-    private LocalDateTime date;
+    private String opis;
+    private LocalDateTime data;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade = CascadeType.PERSIST)
     private AppUser appUser;
 
     @PrePersist
     public void createdOn() {
-        date = LocalDateTime.now();
+        data = LocalDateTime.now();
     }
 }
