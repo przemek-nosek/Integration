@@ -14,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 public class PostCreationDto {
+    private Long eventId;
     private byte[] file;
     private String description;
     private List<PostComment> postComments = new ArrayList<>();

@@ -14,6 +14,6 @@ import java.util.List;
 @Getter
 @Setter
 public class PostCommentCreationDto {
+    private Long postId;
     private String description;
-    private List<CommentAnswer> commentAnswers = new ArrayList<>();
 }

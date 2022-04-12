@@ -11,5 +11,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PostCommentAnswerDto {
+    private Long commentId;
     private String description;
 }

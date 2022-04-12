@@ -14,5 +14,6 @@ import java.util.List;
 @Getter
 @Setter
 public class PostCommentEditionDto {
+    private Long commentId;
     private String description;
 }
