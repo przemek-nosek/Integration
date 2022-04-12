@@ -11,7 +11,5 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PostEditionDto {
-    private Long postId;
-    private byte[] file;
     private String description;
 }
