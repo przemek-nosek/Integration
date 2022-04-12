@@ -31,10 +31,10 @@ public class User {
 
     @ManyToMany
     @JoinTable(
-            name = "course_like",
+            name = "user_usergroup",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private List<Group> groups;
+            inverseJoinColumns = @JoinColumn(name = "usergroup_id"))
+    private List<User_Group> groups;
 
     @Enumerated(EnumType.STRING)
     private Department department;
