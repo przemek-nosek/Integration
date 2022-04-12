@@ -1,6 +1,5 @@
 package com.envelo.integrationapp.model.entities;
 
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
