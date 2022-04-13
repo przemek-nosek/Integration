@@ -1,6 +1,5 @@
 package com.envelo.integrationapp.model.dtos;
 
-import com.envelo.integrationapp.model.entities.PostComment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,6 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class PostEditionDto {
+public class CommentAnswerDto {
+    private Long id;
     private String description;
+    private Long userId;
 }
