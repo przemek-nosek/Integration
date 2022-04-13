@@ -40,4 +40,8 @@ public class GroupService {
         }
         return groupDtoInfoList;
     }
+
+    public List<AppUser> getUsersFromGroup(long id) {
+        return groupRepository.getById(id).getUsers();
+    }
 }
