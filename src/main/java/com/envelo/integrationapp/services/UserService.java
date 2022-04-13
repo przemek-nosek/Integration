@@ -1,6 +1,6 @@
 package com.envelo.integrationapp.services;
 
-import com.envelo.integrationapp.model.dtos.UserDto;
+import com.envelo.integrationapp.model.dtos.info.UserDtoInfo;
 import com.envelo.integrationapp.model.entities.AppUser;
 import com.envelo.integrationapp.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,14 +17,14 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public List<UserDto> getUsers(String name) {
+    public List<UserDtoInfo> getUsers(String name) {
         Pattern pattern = Pattern.compile(name);
-        List<UserDto> usersDto = new ArrayList<>();
+        List<UserDtoInfo> usersDto = new ArrayList<>();
         List<AppUser> users = userRepository.findAll();
         for(AppUser user : users){
             Matcher matcher = pattern.matcher(user.getFirstName() + user.getLastName());
             if(matcher.find()){
-                UserDto userDto = new UserDto();
+                UserDtoInfo userDto = new UserDtoInfo();
                 userDto.setId(user.getId());
                 userDto.setFirstName(user.getFirstName());
                 userDto.setLastName(user.getLastName());
