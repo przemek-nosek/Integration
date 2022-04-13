@@ -31,7 +31,7 @@ public class GroupController {
     }
 
     @GetMapping("/{id}/users")
-    public List<AppUser> getAllUsersInGroup(@PathVariable long id) {
+    public List<AppUser> getAllUsersFromGroup(@PathVariable long id) {
         return groupService.getUsersFromGroup(id);
     }
 }
