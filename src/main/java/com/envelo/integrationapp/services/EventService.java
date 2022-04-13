@@ -3,15 +3,11 @@ package com.envelo.integrationapp.services;
 import com.envelo.integrationapp.model.dtos.EventCreationDto;
 import com.envelo.integrationapp.model.dtos.info.EventDtoInfo;
 
-import com.envelo.integrationapp.model.dtos.info.EventParticipantDtoInfo;
-import com.envelo.integrationapp.model.dtos.info.EventPlaceDtoInfo;
 import com.envelo.integrationapp.model.entities.Event;
 import com.envelo.integrationapp.model.entities.EventParticipant;
 import com.envelo.integrationapp.model.enums.Decision;
 import com.envelo.integrationapp.model.enums.EventRole;
 
-import com.envelo.integrationapp.model.entities.Event;
-import com.envelo.integrationapp.model.entities.EventParticipant;
 import com.envelo.integrationapp.model.enums.EventStatus;
 import com.envelo.integrationapp.model.dtos.EventParticipantDto;
 
