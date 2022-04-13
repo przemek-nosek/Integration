@@ -35,4 +35,9 @@ public class GroupController {
     public List<GroupDtoInfo> getAllGroups() {
         return groupService.getAllGroups();
     }
+
+    @GetMapping("/{id}/users")
+    public List<AppUser> getAllUsersFromGroup(@PathVariable long id) {
+        return groupService.getUsersFromGroup(id);
+    }
 }
