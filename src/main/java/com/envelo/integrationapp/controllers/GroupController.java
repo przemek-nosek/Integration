@@ -19,8 +19,14 @@ public class GroupController {
         groupService.createGroup(users, description);
     }
 
+
     @PatchMapping("/{id}")
     public void updateGroup(@PathVariable long groupId, @RequestBody List<AppUser> users, String description) {
         groupService.updateGroup(users, description, groupId);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteGroup(@PathVariable long id) {
+        groupService.deleteGroup(id);
     }
 }

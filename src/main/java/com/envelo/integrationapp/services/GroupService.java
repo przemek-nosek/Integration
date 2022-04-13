@@ -30,4 +30,8 @@ public class GroupService {
         group.setName(name);
         groupRepository.save(group);
     }
+
+    public void deleteGroup(long id) {
+        groupRepository.deleteById(id);
+    }
 }
