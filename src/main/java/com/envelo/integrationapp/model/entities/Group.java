@@ -17,6 +17,6 @@ public class Group {
     @GeneratedValue
     private Long id;
     private String name;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY)
     private List<AppUser> users;
 }

@@ -26,6 +26,8 @@ public class AppUser {
     private String phone;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "users_groups", joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "groups_id"))
     private Set<Group> groups = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
