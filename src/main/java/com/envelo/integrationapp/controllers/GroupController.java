@@ -1,5 +1,6 @@
 package com.envelo.integrationapp.controllers;
 
+import com.envelo.integrationapp.model.dtos.info.GroupDtoInfo;
 import com.envelo.integrationapp.model.entities.AppUser;
 import com.envelo.integrationapp.services.GroupService;
 import lombok.RequiredArgsConstructor;
@@ -22,5 +23,10 @@ public class GroupController {
     @DeleteMapping("/{id}")
     public void deleteGroup(@PathVariable long id) {
         groupService.deleteGroup(id);
+    }
+
+    @GetMapping
+    public List<GroupDtoInfo> getAllGroups() {
+        return groupService.getAllGroups();
     }
 }
