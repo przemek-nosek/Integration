@@ -1,5 +1,6 @@
 package com.envelo.integrationapp.services;
 
+import com.envelo.integrationapp.model.dtos.info.GroupDtoInfo;
 import com.envelo.integrationapp.model.entities.AppUser;
 import com.envelo.integrationapp.model.entities.Group;
 import com.envelo.integrationapp.repositories.GroupRepository;
@@ -7,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,5 +35,17 @@ public class GroupService {
 
     public void deleteGroup(long id) {
         groupRepository.deleteById(id);
+    }
+
+    public List<GroupDtoInfo> getAllGroups() {
+        List<Group> groups = groupRepository.findAll();
+        List<GroupDtoInfo> groupDtoInfoList = new ArrayList<>();
+        for (Group group : groups) {
+            GroupDtoInfo groupDtoInfo = new GroupDtoInfo();
+            groupDtoInfo.setId(group.getId());
+            groupDtoInfo.setName(group.getName());
+            groupDtoInfoList.add(groupDtoInfo);
+        }
+        return groupDtoInfoList;
     }
 }
