@@ -22,4 +22,12 @@ public class GroupService {
         group.setName(name);
         groupRepository.save(group);
     }
+
+    @Transactional
+    public void updateGroup(List<AppUser> users, String name, long groupId) {
+        Group group = groupRepository.getById(groupId);
+        users.forEach(user -> group.getUsers().add(user));
+        group.setName(name);
+        groupRepository.save(group);
+    }
 }

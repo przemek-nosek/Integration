@@ -3,10 +3,7 @@ package com.envelo.integrationapp.controllers;
 import com.envelo.integrationapp.model.entities.AppUser;
 import com.envelo.integrationapp.services.GroupService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +17,10 @@ public class GroupController {
     @PostMapping("")
     public void addGroup(@RequestBody List<AppUser> users, String description) {
         groupService.createGroup(users, description);
+    }
+
+    @PatchMapping("/{id}")
+    public void updateGroup(@PathVariable long groupId, @RequestBody List<AppUser> users, String description) {
+        groupService.updateGroup(users, description, groupId);
     }
 }
